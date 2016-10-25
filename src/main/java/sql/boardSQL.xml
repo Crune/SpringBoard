@@ -4,32 +4,19 @@
 	<typeAlias alias="dto" type="org.kh.board.BoardDataBean" />
 
 	<select id="count" resultClass="int">
-		select count(no) from board
+		SELECT count(*) FROM board
 	</select>
-
-	<sql id="c-list1">
-		num, writer, subject, email, content, passwd, reg_date,
-		readcount, ip, ref, re_step, re_level
+		
+	<sql id="c-list-01">
+		num, writer, subject, email, content, passwd, reg_date, readcount, ip, ref, re_step, re_level
 	</sql>
-
-	<sql id="st-select1">
-		SELECT
-		<include refid="c-list1" />
-	</sql>
-
+	
 	<select id="getArticles" resultClass="dto" parameterClass="java.util.HashMap">
-		<include refid="st-select1" /><![CDATA[
-				,r
-			FROM (
-		]]><include refid="st-select1" /><![CDATA[
-					rownum r
-				FROM (
-		]]><include refid="st-select1" /><![CDATA[
-					FROM board
-					ORDER BY ref DESC, re_step ASC
-				) ORDER BY ref DESC, re_step ASC
-			) WHERE r >= #start# AND r <= #end#
-			]]>
+		SELECT <include refid="c-list-01" />,r FROM <![CDATA[(]]>
+			SELECT <include refid="c-list-01" />, rownum r FROM <![CDATA[(]]>
+				SELECT * FROM board ORDER BY ref DESC, re_step ASC
+			<![CDATA[) ORDER BY ref DESC, re_step ASC]]>
+		<![CDATA[) WHERE r >= #start# AND r <= #end#]]>
 	</select>
 
 </sqlMap>

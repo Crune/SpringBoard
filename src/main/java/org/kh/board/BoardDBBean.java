@@ -1,11 +1,11 @@
-package board;
+package org.kh.board;
 import java.sql.*;
 import javax.sql.*;
 import javax.naming.*;
 import java.util.*; 
 
 public class BoardDBBean {
-
+/*
 	private static BoardDBBean instance = new BoardDBBean();
 	
 	public static BoardDBBean getInstance() {
@@ -305,4 +305,5 @@ public class BoardDBBean {
 		}
 		return x;
 	}
+	*/
 }
