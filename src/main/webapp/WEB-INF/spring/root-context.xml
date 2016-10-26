@@ -21,6 +21,18 @@
 		<property name="password" value="web19" />
 	</bean>
 	
-	<bean id="date" class="java.util.Date" />
+	<bean id="date" class="java.util.Date" />	
+	
+	<bean id="download" class="upload.bean.DownloadView" />
+	
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0" />
+	</bean>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="-1" />
+		<property name="defaultEncoding" value="euc-kr" />
+	</bean>
+	
 	
 </beans>
