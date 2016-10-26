@@ -10,10 +10,8 @@
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
-	<listener>
-		<display-name>SpringContextLoader</display-name>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+	
+	<!-- 필터 설정 -->
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -31,6 +29,14 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+
+	<!-- 리스너 설정 -->
+	<listener>
+		<display-name>SpringContextLoader</display-name>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<!-- DispathcherSerlvet 설정 -->
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
